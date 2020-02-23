@@ -32,6 +32,8 @@ public class AirportPerCountryDriver extends Configured implements Tool {
 
         job.setMapperClass(AirportPerCountryMap.class);
         job.setReducerClass(AirportPerCountryReduce.class);
+        job.setNumReduceTasks(2);
+        job.setCombinerClass(AirportPerCountryReduce.class);
 
         Path inputFile = new Path(args[0]);
         Path outputFile = new Path(args[1]);
